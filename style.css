@@ -19,12 +19,13 @@ body {
 
 /* Container com a imagem de fundo */
 .container {
-    background: url(https://cdn-0001.qstv.on.epicgames.com/tQIYPUTyErJlMDJccq/image/landscape_comp.jpeg) no-repeat center center/cover;
-    background-size: cover;  /* Garante que a imagem ocupe toda a tela sem distorcer */
+    background: url(https://cdn-0001.qstv.on.epicgames.com/tQIYPUTyErJlMDJccq/image/landscape_comp.jpeg) no-repeat center center;
+    background-size: cover;  /* Garantir que a imagem cubra toda a tela sem distorção */
     min-height: 100vh; /* Garantir que a tela ocupe toda a altura da janela */
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative; /* Garantir que o conteúdo fique acima da imagem */
 }
 
 /* Content div para texto e botão */
@@ -122,7 +123,8 @@ footer {
 /* Ajustes para dispositivos móveis */
 @media (max-width: 768px) {
     .container {
-        background-size: contain; /* Garante que a imagem se ajuste sem cortar no celular */
+        background-size: contain; /* Faz a imagem se ajustar no celular */
+        background-position: center center; /* Centraliza a imagem */
     }
 
     .content {
@@ -139,6 +141,7 @@ footer {
     }
 }
 
+/* Ajustes para telas menores */
 @media (max-width: 480px) {
     .content {
         width: 90%;
