@@ -1,0 +1,135 @@
+/* Global Styles */
+body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: white;
+    position: relative;
+}
+
+/* Logo Styles */
+.logo {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    max-width: 150px;
+    width: auto;
+}
+
+/* Container com a imagem de fundo */
+.container {
+    background: url(https://cdn-0001.qstv.on.epicgames.com/tQIYPUTyErJlMDJccq/image/landscape_comp.jpeg) no-repeat center center/cover;
+    min-height: 100vh; /* Garantir que a tela ocupe toda a altura da janela */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Content div para texto e botão */
+.content {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px 40px;
+    border-radius: 8px;
+    width: 100%; /* Garante que a tela se ajuste */
+    max-width: 400px; /* Limita a largura para que o layout não fique muito esticado */
+}
+
+/* Títulos */
+.content h2 {
+    margin-bottom: 20px;
+}
+
+/* Estilo dos botões */
+button {
+    background-color: #ff1b7b;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-radius: 5px; /* Borda arredondada nos botões */
+    width: 100%; /* Faz os botões ficarem com a mesma largura */
+    margin: 10px 0; /* Espaçamento entre os botões */
+}
+
+button:hover {
+    background-color: #1ABC9C;
+    transform: scale(1.1); /* Efeito de aumentar o botão ao passar o mouse */
+}
+
+button:focus {
+    outline: none; /* Remove o contorno do botão ao focar */
+}
+
+/* Estilo para os botões de jogo na tela de escolha */
+.buttons {
+    display: flex;
+    flex-direction: column; /* Coloca os botões em uma coluna */
+    width: 100%; /* Faz com que os botões ocupem toda a largura disponível */
+}
+
+/* Estilo do campo de entrada para quantidade */
+input[type="number"] {
+    padding: 10px;
+    font-size: 1.2em;
+    width: 100%;
+    border-radius: 5px;
+    border: none;
+    margin-bottom: 20px;
+}
+
+input[type="number"]:focus {
+    outline: 2px solid #ff1b7b; /* Destacar o campo de entrada com a cor do botão ao focar */
+}
+
+/* Estilo do campo de resultado */
+#resultado {
+    margin-top: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+/* Estilo para o botão "Voltar" */
+.btn-back {
+    background-color: #1ABC9C; /* Cor diferente para o botão voltar */
+    padding: 10px 20px;
+    font-size: 1em;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.btn-back:hover {
+    background-color: #ff1b7b; /* Cor do botão voltar ao passar o mouse */
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Ajustes para dispositivos móveis */
+@media (max-width: 768px) {
+    .content {
+        padding: 15px;
+        width: 90%; /* Ajusta a largura em telas menores */
+    }
+
+    .logo {
+        max-width: 100px; /* Reduz a largura da logo em dispositivos móveis */
+    }
+
+    button {
+        font-size: 1em; /* Ajusta o tamanho da fonte dos botões em telas pequenas */
+    }
+}

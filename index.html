@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conversor de Moeda</title>
+  <link rel="stylesheet" href="style.css"> <!-- Vinculando o CSS -->
+</head>
+<body>
+
+  <img src="https://i.postimg.cc/GpCxYmvc/title.png" alt="Logo" class="logo">
+
+  <div class="container" id="tela-inicial">
+    <div class="content">
+      <h2>QUAL SEU JOGO PREFERIDO?</h2>
+      <p>Vamos Converter as Moedas para REAL?</p>
+      <button class="btn-main" onclick="mostrarOpcoes()">Começar!</button>
+    </div>
+  </div>
+
+  <div class="container" id="tela-escolha" style="display: none;">
+    <div class="content">
+      <h2>Escolha seu jogo preferido</h2>
+      <div class="buttons">
+        <button class="btn-option" onclick="escolherJogo('Fortnite')">FORTNITE</button>
+        <button class="btn-option" onclick="escolherJogo('Minecraft')">MINECRAFT</button>
+        <button class="btn-option" onclick="escolherJogo('Roblox')">ROBLOX</button>
+      </div>
+      <button class="btn-back" onclick="voltarInicio()">Voltar</button>
+    </div>
+  </div>
+
+  <div class="container" id="tela-conversao" style="display: none;">
+    <div class="content">
+      <h2>Conversor de Moeda</h2>
+      <p id="moeda-selecionada"></p>
+      <input type="number" id="quantidade" placeholder="Digite a quantidade" onchange="limparResultado()">
+      <button class="btn-main" onclick="converterMoeda()">Converter</button>
+      <p id="resultado"></p>
+      <button class="btn-back" onclick="voltarEscolha()">Escolher outro jogo</button>
+    </div>
+  </div>
+
+  <footer>JHONATHAN DEV - 2025</footer>
+
+  <script src="script.js"></script> <!-- Vinculando o JavaScript -->
+</body>
+</html>
