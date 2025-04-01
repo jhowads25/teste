@@ -20,6 +20,7 @@ body {
 /* Container com a imagem de fundo */
 .container {
     background: url(https://cdn-0001.qstv.on.epicgames.com/tQIYPUTyErJlMDJccq/image/landscape_comp.jpeg) no-repeat center center/cover;
+    background-size: cover;  /* Garante que a imagem ocupe toda a tela sem distorcer */
     min-height: 100vh; /* Garantir que a tela ocupe toda a altura da janela */
     display: flex;
     justify-content: center;
@@ -120,6 +121,10 @@ footer {
 
 /* Ajustes para dispositivos móveis */
 @media (max-width: 768px) {
+    .container {
+        background-size: contain; /* Garante que a imagem se ajuste sem cortar no celular */
+    }
+
     .content {
         padding: 15px;
         width: 90%; /* Ajusta a largura em telas menores */
@@ -131,5 +136,12 @@ footer {
 
     button {
         font-size: 1em; /* Ajusta o tamanho da fonte dos botões em telas pequenas */
+    }
+}
+
+@media (max-width: 480px) {
+    .content {
+        width: 90%;
+        padding: 10px;
     }
 }
