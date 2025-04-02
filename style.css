@@ -1,150 +1,226 @@
 /* Global Styles */
 body {
-    background-color: black;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     color: white;
+    background-color: #000;
+    background-image: url('imagens/fundo-inicial.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
     position: relative;
+    overflow-x: hidden;
+}
+
+/* Overlay escuro para melhor legibilidade */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: -1;
 }
 
 /* Logo Styles */
 .logo {
-    position: absolute;
+    position: fixed;
     top: 20px;
     right: 20px;
-    max-width: 150px;
-    width: auto;
+    width: 120px;
+    height: auto;
+    z-index: 100;
+    filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
 }
 
-/* Container com a imagem de fundo */
+/* Container Styles */
 .container {
-    background: url(https://cdn-0001.qstv.on.epicgames.com/tQIYPUTyErJlMDJccq/image/landscape_comp.jpeg) no-repeat center center;
-    background-size: cover;  /* Garantir que a imagem cubra toda a tela sem distorção */
-    min-height: 100vh; /* Garantir que a tela ocupe toda a altura da janela */
+    min-height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    position: relative; /* Garantir que o conteúdo fique acima da imagem */
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
 }
 
-/* Content div para texto e botão */
+/* Content Styles - Quadro principal */
 .content {
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px 40px;
-    border-radius: 8px;
-    width: 100%; /* Garante que a tela se ajuste */
-    max-width: 400px; /* Limita a largura para que o layout não fique muito esticado */
+    background: rgba(0, 0, 0, 0.7);
+    padding: 25px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 350px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+    margin: 20px auto;
 }
 
-/* Títulos */
 .content h2 {
-    margin-bottom: 20px;
+    margin: 0 0 18px 0;
+    color: #1ABC9C;
+    font-size: 1.6em;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
-/* Estilo dos botões */
+/* Imagem do Jogo */
+#imagem-jogo {
+    display: none;
+    width: 280px;
+    max-width: 90%;
+    height: auto;
+    margin: 0 auto 25px auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    border: 2px solid rgba(255,255,255,0.1);
+}
+
+/* Botões */
 button {
-    background-color: #ff1b7b;
+    background: linear-gradient(135deg, #ff1b7b 0%, #e81050 100%);
     border: none;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    border-radius: 5px; /* Borda arredondada nos botões */
-    width: 100%; /* Faz os botões ficarem com a mesma largura */
-    margin: 10px 0; /* Espaçamento entre os botões */
-}
-
-button:hover {
-    background-color: #1ABC9C;
-    transform: scale(1.1); /* Efeito de aumentar o botão ao passar o mouse */
-}
-
-button:focus {
-    outline: none; /* Remove o contorno do botão ao focar */
-}
-
-/* Estilo para os botões de jogo na tela de escolha */
-.buttons {
-    display: flex;
-    flex-direction: column; /* Coloca os botões em uma coluna */
-    width: 100%; /* Faz com que os botões ocupem toda a largura disponível */
-}
-
-/* Estilo do campo de entrada para quantidade */
-input[type="number"] {
-    padding: 10px;
-    font-size: 1.2em;
-    width: 100%;
-    border-radius: 5px;
-    border: none;
-    margin-bottom: 20px;
-}
-
-input[type="number"]:focus {
-    outline: 2px solid #ff1b7b; /* Destacar o campo de entrada com a cor do botão ao focar */
-}
-
-/* Estilo do campo de resultado */
-#resultado {
-    margin-top: 20px;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-/* Estilo para o botão "Voltar" */
-.btn-back {
-    background-color: #1ABC9C; /* Cor diferente para o botão voltar */
-    padding: 10px 20px;
+    padding: 12px 24px;
     font-size: 1em;
     color: white;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    border-radius: 5px;
-    margin-top: 20px;
+    border-radius: 8px;
+    width: 100%;
+    margin: 10px 0;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    box-shadow: 0 3px 5px rgba(0,0,0,0.1);
 }
 
-.btn-back:hover {
-    background-color: #ff1b7b; /* Cor do botão voltar ao passar o mouse */
+button:hover {
+    background: linear-gradient(135deg, #1ABC9C 0%, #16a085 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+/* Botões específicos */
+.btn-option {
+    background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+}
+
+.btn-back {
+    background: transparent;
+    border: 2px solid #1ABC9C;
+    color: #1ABC9C;
+    margin-top: 15px;
+}
+
+/* Campo de entrada */
+input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    margin: 12px 0;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    font-size: 1em;
+    background: rgba(255,255,255,0.9);
+    color: #333;
+    transition: all 0.3s;
+    box-sizing: border-box;
+}
+
+input[type="number"]:focus {
+    outline: none;
+    border-color: #ff1b7b;
+    box-shadow: 0 0 0 3px rgba(255,27,123,0.2);
+}
+
+/* Resultado */
+#resultado {
+    margin: 15px 0;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #1ABC9C;
 }
 
 /* Footer */
 footer {
-    text-align: center;
-    padding: 10px;
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
+    text-align: center;
+    padding: 10px;
+    background: rgba(0,0,0,0.7);
+    font-size: 0.8em;
+    z-index: 10;
 }
 
-/* Ajustes para dispositivos móveis */
-@media (max-width: 768px) {
-    .container {
-        background-size: contain; /* Faz a imagem se ajustar no celular */
-        background-position: center center; /* Centraliza a imagem */
-    }
-
-    .content {
-        padding: 15px;
-        width: 90%; /* Ajusta a largura em telas menores */
-    }
-
-    .logo {
-        max-width: 100px; /* Reduz a largura da logo em dispositivos móveis */
-    }
-
-    button {
-        font-size: 1em; /* Ajusta o tamanho da fonte dos botões em telas pequenas */
-    }
-}
-
-/* Ajustes para telas menores */
+/* Responsividade para mobile */
 @media (max-width: 480px) {
     .content {
-        width: 90%;
-        padding: 10px;
+        padding: 20px;
+        max-width: 300px;
     }
+    
+    #imagem-jogo {
+        width: 240px;
+    }
+    
+    button {
+        padding: 10px 20px;
+    }
+    
+    .content h2 {
+        font-size: 1.4em;
+    }
+/* Ajustes específicos para a tela de conversão */
+#tela-conversao .content {
+    max-width: 320px; /* Reduzido de 350px */
+    padding: 20px;   /* Reduzido de 25px */
+    margin-top: 10px; /* Espaço menor acima do quadro */
+}
+
+/* Ajuste para a imagem do jogo na tela de conversão */
+#tela-conversao #imagem-jogo {
+    width: 250px;     /* Reduzido de 280px */
+    margin-bottom: 15px; /* Espaço menor abaixo da imagem */
+}
+
+/* Ajuste para o campo de entrada */
+#tela-conversao input[type="number"] {
+    padding: 10px;    /* Reduzido de 12px */
+    margin: 10px 0;   /* Espaçamento reduzido */
+}
+
+/* Ajuste para os botões na tela de conversão */
+#tela-conversao button {
+    padding: 10px 20px; /* Reduzido de 12px 24px */
+    margin: 8px 0;     /* Espaçamento reduzido */
+}
+
+/* Ajuste para o texto da moeda */
+#moeda-selecionada {
+    font-size: 1.1em;  /* Tamanho ligeiramente reduzido */
+    margin-bottom: 10px;
+}
+
+/* Versão mobile */
+@media (max-width: 480px) {
+    #tela-conversao .content {
+        max-width: 280px; /* Ainda menor em mobile */
+        padding: 15px;
+    }
+    
+    #tela-conversao #imagem-jogo {
+        width: 220px;
+    }
+}
+
+
+
+
 }
