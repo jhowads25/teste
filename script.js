@@ -1,70 +1,92 @@
 let jogoSelecionado = "";
 
-// Função para mostrar as opções de jogo na tela inicial
+// Função para mostrar as opções de jogo
 function mostrarOpcoes() {
-    document.getElementById("tela-inicial").style.display = "none"; // Esconde a tela inicial
-    document.getElementById("tela-escolha").style.display = "flex"; // Mostra a tela de escolha de jogo
+    document.getElementById("tela-inicial").style.display = "none";
+    document.getElementById("tela-escolha").style.display = "flex";
+    document.getElementById("imagem-jogo").style.display = "none";
 }
 
-// Função para escolher o jogo
+// Função para selecionar o jogo
 function escolherJogo(jogo) {
     jogoSelecionado = jogo;
-    document.getElementById("tela-escolha").style.display = "none"; // Esconde a tela de escolha
-    document.getElementById("tela-conversao").style.display = "flex"; // Mostra a tela de conversão
     
-    // Limpar valores anteriores
-    document.getElementById("quantidade").value = ""; // Limpa o campo de entrada de quantidade
-    document.getElementById("resultado").innerText = ""; // Limpa o resultado da conversão
+    // Configura a imagem do jogo selecionado
+    const imgElement = document.getElementById("imagem-jogo");
+    let imagemJogo = "";
+    
+    if (jogo === "Fortnite") {
+        imagemJogo = "imagens/fortnite.jpg";
+    } else if (jogo === "Minecraft") {
+        imagemJogo = "imagens/minecraft.webp";
+    } else if (jogo === "Roblox") {
+        imagemJogo = "imagens/roblox.jpg";
+    }
+    
+    imgElement.src = imagemJogo;
+    imgElement.style.display = "block";
+    imgElement.style.width = "380px";
+    imgElement.alt = `Imagem do ${jogo}`;
 
-    // Adicionando o nome da moeda selecionada ao texto
-    let nomeMoeda = jogoSelecionado === "Fortnite" ? "V-Bucks" :
-                    jogoSelecionado === "Minecraft" ? "Minecoins" :
-                    jogoSelecionado === "Roblox" ? "Robux" : "";
+    // Atualiza as telas
+    document.getElementById("tela-escolha").style.display = "none";
+    document.getElementById("tela-conversao").style.display = "flex";
 
-    document.getElementById("moeda-selecionada").innerText = "Converta " + nomeMoeda + " para Real"; // Exibe o nome da moeda
+    // Configura o texto da moeda
+    const moedas = {
+        "Fortnite": "V-Bucks",
+        "Minecraft": "Minecoins",
+        "Roblox": "Robux"
+    };
+    document.getElementById("moeda-selecionada").textContent = `Converta ${moedas[jogo]} para Real`;
 
-    // Colocando o foco automaticamente no campo de entrada para que o usuário possa digitar diretamente
+    // Prepara para nova conversão
+    document.getElementById("quantidade").value = "";
+    document.getElementById("resultado").textContent = "";
     document.getElementById("quantidade").focus();
 }
 
-// Função para realizar a conversão de moeda
+// Função para converter a moeda
 function converterMoeda() {
-    let quantidade = document.getElementById("quantidade").value;
-    if (quantidade === "" || quantidade <= 0) {
-        alert("Digite uma quantidade válida.");
+    const quantidade = parseFloat(document.getElementById("quantidade").value);
+    
+    if (isNaN(quantidade) || quantidade <= 0) {
+        alert("Por favor, digite um valor válido!");
+        document.getElementById("quantidade").focus();
         return;
     }
 
-    let taxasDeCambio = {
-        "Fortnite": 0.025,   // 1 V-Buck = R$ 0,025
-        "Minecraft": 0.05,   // 1 Minecoin = R$ 0,05
-        "Roblox": 0.035      // 1 Robux = R$ 0,035
+    const taxas = {
+        "Fortnite": 0.025,
+        "Minecraft": 0.05,
+        "Roblox": 0.035
     };
 
-    let valorConvertido = quantidade * taxasDeCambio[jogoSelecionado];
-    document.getElementById("resultado").innerText = "Valor em Real: R$ " + valorConvertido.toFixed(2); // Exibe o resultado da conversão
-    
-    // Limpar o campo de entrada após conversão
-    document.getElementById("quantidade").value = "";
+    const resultado = (quantidade * taxas[jogoSelecionado]).toFixed(2);
+    document.getElementById("resultado").innerHTML = `Valor em Real: <strong>R$ ${resultado}</strong>`;
 }
 
-// Função para limpar o resultado da conversão
+// Função para limpar o resultado
 function limparResultado() {
-    document.getElementById("resultado").innerText = ""; // Limpa o campo de resultado
+    document.getElementById("resultado").textContent = "";
 }
 
-// Função para voltar à tela de escolha de jogo
+// Função para voltar à tela de escolha
 function voltarEscolha() {
-    document.getElementById("tela-conversao").style.display = "none"; // Esconde a tela de conversão
-    document.getElementById("tela-escolha").style.display = "flex"; // Mostra a tela de escolha
+    document.getElementById("tela-conversao").style.display = "none";
+    document.getElementById("tela-escolha").style.display = "flex";
+    document.getElementById("imagem-jogo").style.display = "none";
 }
 
 // Função para voltar à tela inicial
 function voltarInicio() {
-    document.getElementById("tela-escolha").style.display = "none"; // Esconde a tela de escolha
-    document.getElementById("tela-inicial").style.display = "flex"; // Mostra a tela inicial
-    
-    // Limpar qualquer dado anterior ao voltar para a tela inicial
-    document.getElementById("quantidade").value = "";  // Limpar o campo de quantidade
-    document.getElementById("resultado").innerText = "";  // Limpar o resultado
+    document.getElementById("tela-escolha").style.display = "none";
+    document.getElementById("tela-inicial").style.display = "flex";
+    document.getElementById("imagem-jogo").style.display = "none";
 }
+
+// Adiciona tratamento de erro para imagens
+document.getElementById("imagem-jogo").onerror = function() {
+    this.style.display = "none";
+    console.error("Erro ao carregar imagem: " + this.src);
+};
